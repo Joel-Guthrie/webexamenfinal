@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen final</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://s1.significados.com/foto/imagen-de-destaque-que-es-el-futbol.-jugadores-y-balon.jpg?class=ogImageRectangle');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 100;
+            z-index: -1;
+        }
+        .frame {
+            padding: 30px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            margin: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 20, 60, 0.8);
+        }
+        #frame1 {
+            background-color: rgba(7, 24, 92);
+        }
+        #frame2 {
+            flex-grow: 1;
+            background-color: rgba(7, 24, 92);
+        }
+        #frame3 {
+            background-color: rgba(7, 24, 92);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+        }
+        .dropbtn {
+            background-color: #1a3c6e;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dropbtn:hover {
+            background-color: #2c5aa0;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .team-info {
+            display: none;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        form {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+        input[type="submit"] {
+            background-color: #1a3c6e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #2c5aa0;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        p {
+            line-height: 1.6;
+        }
+        #message {
+            display: none;
+            background-color: #1a3c6e;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="frame1" class="frame">
+            <center><h2>Mejores equipos de Europa</h2></center>
+            <div class="dropdown">
+                <button onclick="toggleDropdown()" class="dropbtn">Selecciona un equipo ▼</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" onclick="showTeamInfo('real-madrid')">Real Madrid</a>
+                    <a href="#" onclick="showTeamInfo('milan')">Milan</a>
+                    <a href="#" onclick="showTeamInfo('barcelona')">Barcelona</a>
+                </div>
+            </div>
+            <div id="real-madrid" class="team-info">
+                <center><h3>Real Madrid</h3></center>
+                <p>El Real Madrid Club de Fútbol, fundado en 1902, es el club más exitoso de Europa. Con 14 títulos de Champions League, 35 de La Liga, 20 Copas del Rey, y 8 Supercopas de España, entre otros, el Real Madrid ha sido hogar de leyendas como Alfredo Di Stéfano, Cristiano Ronaldo y Sergio Ramos.</p>
+            </div>
+            <div id="milan" class="team-info">
+                <center><h3>AC Milan</h3></center>
+                <p>El Associazione Calcio Milan, fundado en 1899, es uno de los clubes más prestigiosos de Italia y Europa. Con 7 títulos de Champions League, 19 de Serie A, 5 Copas de Italia, y 7 Supercopas de Italia, el Milan ha contado con jugadores legendarios como Paolo Maldini, Franco Baresi y Kaká.</p>
+            </div>
+            <div id="barcelona" class="team-info">
+                <center><h3>FC Barcelona</h3></center>
+                <p>El Fútbol Club Barcelona, fundado en 1899, es uno de los clubes más exitosos de España y Europa. Con 5 títulos de Champions League, 26 de La Liga, 31 Copas del Rey, y 14 Supercopas de España, el Barça ha contado con jugadores legendarios como Lionel Messi, Johan Cruyff y Xavi Hernández.</p>
+            </div>
+        </div>
+        <div id="frame2" class="frame">
+            <center><h1>Noticias de Fútbol</h1></center>
+            <p>Bienvenido a nuestra página de fútbol profesional. Aquí encontrarás las últimas noticias y actualizaciones sobre los mejores equipos de Europa y sus estrellas.</p>
+            <form id="footballForm" action="#" method="get" onsubmit="return false;">
+                <h3>Contacto para Aficionados</h3>
+                <input type="text" id="name" name="name" placeholder="Nombre" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                <select id="team" name="team" required>
+                    <option value="">Selecciona tu equipo favorito</option>
+                    <option value="real-madrid">Real Madrid</option>
+                    <option value="milan">AC Milan</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <textarea id="message" name="message" placeholder="¿Cuál es tu jugador favorito y por qué?" rows="4" required></textarea>
+                <input type="submit" value="Enviar" onclick="submitForm()">
+            </form>
+            <div id="message"></div>
+        </div>
+        <div id="frame3" class="frame">
+            <center><h2>Noticias Externas</h2></center>
+            <iframe src="https://www.marca.com/" title="Marca - Noticias de Fútbol"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function showTeamInfo(teamId) {
+            var teamInfos = document.getElementsByClassName("team-info");
+            for (var i = 0; i < teamInfos.length; i++) {
+                teamInfos[i].style.display = "none";
+            }
+            document.getElementById(teamId).style.display = "block";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function submitForm() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').innerHTML = '¡Enviado! Gracias por tu mensaje.';
+            document.getElementById('footballForm').reset();
+            setTimeout(function() {
+                document.getElementById('message').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
